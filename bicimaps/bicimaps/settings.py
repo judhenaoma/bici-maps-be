@@ -4,9 +4,10 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# GDAL_LIBRARY_PATH = 'C:\OSGeo4W\apps\gdal\share\gdal'
 GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal306.dll'
+
+# Specify the default model to authenticate users
+AUTH_USER_MODEL = 'bicimaps_app.User'
 
 
 # Quick-start development settings - unsuitable for production
@@ -67,18 +68,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bicimaps.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
+        # 'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'bici-maps-app',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '1045',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': 'pKJanqIoGjbXdOeS9fis',
+        'HOST': 'containers-us-west-54.railway.app',
+        'PORT': '6393',
     }
 }
 
