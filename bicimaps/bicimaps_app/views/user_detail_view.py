@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from ..serializers.user_serializer import UserSerializer
+from ..serializers.user_serializer import UserDetailSerializer
 
 class UserDetailView(APIView):
 
@@ -13,5 +13,5 @@ class UserDetailView(APIView):
 
     def get(self, request):
         user_authenticated = request.user
-        serializer = UserSerializer(user_authenticated)
+        serializer = UserDetailSerializer(user_authenticated)
         return Response(serializer.data, status=status.HTTP_200_OK)
