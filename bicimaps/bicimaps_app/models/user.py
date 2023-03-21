@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.utils.text import slugify
 
 # Clase que permite redefinir la manera como se crea un usuario en Django
 class CustomUserManager(BaseUserManager):
@@ -19,7 +20,8 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
     
 class User(AbstractUser, PermissionsMixin):
-    email = models.EmailField(unique=True)
+    email = models.EmailField(primary_key=True)
+    username = models.CharField(max_length=100, null=True, blank=True)
     first_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100, null=True, blank=True)
     has_bike = models.BooleanField(default=True)
@@ -33,6 +35,12 @@ class User(AbstractUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name',]
 
     objects = CustomUserManager()
+
+    # Redefinir el método save para que el username sea el email sin el dominio
+    def save(self, *args, **kwargs):
+        if not self.username:
+            self.username = slugify(self.email.split('@')[0])
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.email

@@ -97,9 +97,9 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'pKJanqIoGjbXdOeS9fis',
-        'HOST': 'containers-us-west-54.railway.app',
-        'PORT': '6393',
+        'PASSWORD': 'c4opKsV0FjzUCmIo12KT',
+        'HOST': 'containers-us-west-16.railway.app',
+        'PORT': '6407',
     }
 }
 

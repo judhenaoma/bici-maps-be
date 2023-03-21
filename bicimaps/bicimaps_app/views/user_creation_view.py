@@ -32,6 +32,10 @@ class UserCreationView(APIView):
             content = {"detail": "Las contraseñas no coinciden."}
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
         
+        if User.objects.filter(email=email).exists():
+            content = {"detail": "Usuario con el email dado ya existe."}
+            return Response(content, status=status.HTTP_400_BAD_REQUEST)
+        
         try:
             User.objects.create_user(
                 email=data["email"], 
@@ -43,9 +47,10 @@ class UserCreationView(APIView):
                 university=data["university"],
                 password=data["password"]
             )
-        except:
-            content = {"detail": "Usuario con el email dado ya existe."}
-            return Response(content, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            content = {"detail": "Error inesperado en el servidor", "error": str(e)}
+            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
         return Response({"detail": "Usuario creado exitosamente."}, status=status.HTTP_201_CREATED)
 
 
