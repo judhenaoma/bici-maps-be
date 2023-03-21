@@ -1,1 +1,2 @@
 from .user_serializer import UserDetailSerializer
+from .review_serializer import ReviewCreationSerializer

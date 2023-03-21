@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.gis.geos import GEOSGeometry
-from ..serializers.review_serializer import ReviewSerializer
+from ..serializers.review_serializer import ReviewCreationSerializer
 from django.contrib.auth import get_user_model
 from django.contrib.gis.geos import Point
 import json
@@ -21,7 +21,7 @@ class ReviewCreationView(APIView):
         User = get_user_model()
         user_instance = User.objects.get(email = request.user.email)
         data = JSONParser().parse(request)
-        serializer = ReviewSerializer(data=data)
+        serializer = ReviewCreationSerializer(data=data)
 
         if serializer.is_valid():
             serializer.validated_data["user_id"] = user_instance
