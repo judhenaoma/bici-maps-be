@@ -2,12 +2,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.gis.geos import GEOSGeometry
+# from django.contrib.gis.geos import GEOSGeometry
 from ..serializers.review_serializer import ReviewCreationSerializer
 from django.contrib.auth import get_user_model
 from django.contrib.gis.geos import Point
-import json
-from django.http import JsonResponse
+# from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 
 from ..models.review import Review
