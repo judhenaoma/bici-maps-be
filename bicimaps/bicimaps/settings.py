@@ -1,11 +1,22 @@
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal306.dll'
+# GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal306.dll'
+
+# LIB_DIR = os.path.join(BASE_DIR, '..', 'lib')
+
+# Ruta absoluta de la biblioteca GDAL
+# GDAL_LIBRARY_PATH = os.path.join(LIB_DIR, 'gdal306.dll')
+
+import os
+
+# GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
+
 
 # Specify the default model to authenticate users
 AUTH_USER_MODEL = 'bicimaps_app.User'
