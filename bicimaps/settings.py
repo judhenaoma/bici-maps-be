@@ -2,7 +2,8 @@
 from pathlib import Path
 from datetime import timedelta
 import os
-
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -157,10 +158,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())
 
 
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# DATABASES['default'].update(db_from_env)
