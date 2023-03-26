@@ -3,6 +3,8 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,7 +15,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Ruta absoluta de la biblioteca GDAL
 # GDAL_LIBRARY_PATH = os.path.join(LIB_DIR, 'gdal306.dll')
 
-import os
 
 # GDAL_LIBRARY_PATH = os.getenv('GDAL_LIBRARY_PATH', '/usr/lib/libgdal.so')
 
@@ -158,3 +159,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 import django_heroku
 django_heroku.settings(locals())
+
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
