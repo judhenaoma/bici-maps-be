@@ -3,6 +3,7 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.staticfiles',
     'bicimaps_app',
     'rest_framework',
     # dependecies to add geospatial support
@@ -114,6 +116,7 @@ DATABASES = {
     }
 }
 
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -156,16 +159,16 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# import django_heroku
-# django_heroku.settings(locals())
+import django_heroku
+django_heroku.settings(locals())
 
 
 # DATABASES['default'].update(db_from_env)
 
 
-import dj_database_url
+# import dj_database_url
 
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600,
-    conn_health_checks=True,
-)
+# DATABASES['default'] = dj_database_url.config(
+#     conn_max_age=600,
+#     conn_health_checks=True,
+# )
