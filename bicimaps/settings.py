@@ -3,7 +3,6 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'bicimaps_app',
     'rest_framework',
     # dependecies to add geospatial support
@@ -163,3 +161,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # DATABASES['default'].update(db_from_env)
+
+
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600,
+    conn_health_checks=True,
+)
