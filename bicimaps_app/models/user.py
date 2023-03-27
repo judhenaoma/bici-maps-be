@@ -39,7 +39,8 @@ class User(AbstractUser, PermissionsMixin):
     # Redefinir el método save para que el username sea el email sin el dominio
     def save(self, *args, **kwargs):
         if not self.username:
-            self.username = slugify(self.email.split('@')[0])
+            if "@" in self.email:
+                self.username = slugify(self.email.split('@')[0])
         super().save(*args, **kwargs)
 
     def __str__(self):
