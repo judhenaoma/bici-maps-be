@@ -9,7 +9,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal306.dll'
+# GDAL_LIBRARY_PATH = 'C:/OSGeo4W/bin/gdal306.dll'
 
 # LIB_DIR = os.path.join(BASE_DIR, '..', 'lib')
 
