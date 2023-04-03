@@ -12,11 +12,10 @@ from ..views.bike_way_creation_view import BikeWaysCreationView
 urlpatterns = [
     path('sign-up/', UserCreationView.as_view()),
     path('user-detail/', UserDetailView.as_view()),
-    # path('create-review/', ReviewCreationView.as_view()),
-    # path('reviews/', ReviewsListView.as_view()),
-    # path('review-detail/<int:review_id>/', ReviewDetailView.as_view()),
-    # path('create-route/', RouteCreationView.as_view()),
-    # path('my-routes/', RoutesListView.as_view()),
-    # path('create-encicla-station/', EnciclaStationsCreationView.as_view()),
-    # path('create-bike-way/', BikeWaysCreationView.as_view()),
+    path('create-review/', ReviewCreationView.as_view()),
+    path('reviews/', ReviewsListView.as_view()),
+    path('review-detail/<int:review_id>/', ReviewDetailView.as_view()),
+    path('create-route/', RouteCreationView.as_view()),
+    path('my-routes/', RoutesListView.as_view()),
+    path('create-bike-way/', BikeWaysCreationView.as_view()),
 ]
