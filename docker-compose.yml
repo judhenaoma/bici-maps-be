@@ -1,21 +1,13 @@
 version: "3.9"
-
 services:
    api:
       build:
          context: .
-         dockerfile: Dockerfile.dev
-      command: python3 manage.py runserver
+         dockerfile: Dockerfile
+      command: python3 manage.py runserver 0.0.0.0:8000
+      ports:
+         - "8000:8000"
       volumes:
          - .:/app
-      # ports:
-      #    - 8000:8000
       restart: "on-failure"
-      networks:
-         - bicimaps-api
-      labels:
-          com.docker.compose.container-number : "1"
-networks:
-   bicimaps-api:
-      driver: bridge
     

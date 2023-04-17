@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-#%18dev8evo+_*k(9!iz)x2zdo9c2d-sx^%%+@hyn0)tv)udpl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://bicimaps2.herokuapp.com']
 
 
 # Application definition
@@ -45,11 +45,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bicimaps_app',
     'rest_framework',
+    'corsheaders',
+    'bicimaps_app',
     # dependecies to add geospatial support
     'django.contrib.gis',
     'rest_framework_gis',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:5173',  # for localhost (REACT Default)
+    'http://192.168.0.50:5173',  # for network 
+    'https://bicimaps-dev.herokuapp.com'
+)
+
+
+CSRF_TRUSTED_ORIGINS  = [
+    'http://localhost:5173',  # for localhost (REACT Default)
+    'http://192.168.0.50:5173',  # for network 
+    'https://bicimaps-dev.herokuapp.com'
 ]
 
 SIMPLE_JWT = {
@@ -68,6 +84,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

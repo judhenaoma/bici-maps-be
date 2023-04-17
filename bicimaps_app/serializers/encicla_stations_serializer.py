@@ -7,4 +7,4 @@ class EnciclaCreationSerializer(GeoFeatureModelSerializer):
     class Meta:
         model = EnciclaStations
         geo_field = 'coordinates'
-        fields = ('name', 'coordinates', 'img_src', 'description', 'rating')
+        fields = "__all__"
