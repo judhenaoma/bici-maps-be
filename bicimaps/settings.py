@@ -23,7 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Specify the default model to authenticate users
 AUTH_USER_MODEL = 'bicimaps_app.User'
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -33,7 +32,7 @@ SECRET_KEY = 'django-insecure-#%18dev8evo+_*k(9!iz)x2zdo9c2d-sx^%%+@hyn0)tv)udpl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://bicimaps2.herokuapp.com']
+ALLOWED_HOSTS = ['https://bicimaps.herokuapp.com']
 
 
 # Application definition
@@ -47,25 +46,32 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',
     'bicimaps_app',
     # dependecies to add geospatial support
     'django.contrib.gis',
     'rest_framework_gis',
 ]
 
+ALLOWED_HOSTS = ["localhost", "192.168.1.58"]
+
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:5173',  # for localhost (REACT Default)
-    'http://192.168.0.50:5173',  # for network 
-    'https://bicimaps-dev.herokuapp.com'
+    'http://192.168.1.58:5173',  # for network 
+    'https://bicimaps-dev.herokuapp.com',
+    'https://effervescent-parfait-7ba86e.netlify.app',
+    'https://bicimaps.netlify.app',
 )
 
 
 CSRF_TRUSTED_ORIGINS  = [
     'http://localhost:5173',  # for localhost (REACT Default)
-    'http://192.168.0.50:5173',  # for network 
-    'https://bicimaps-dev.herokuapp.com'
+    'http://192.168.1.58:5173',  # for network 
+    'https://bicimaps-dev.herokuapp.com',
+    'https://effervescent-parfait-7ba86e.netlify.app',
+    'https://bicimaps.netlify.app',
 ]
 
 SIMPLE_JWT = {
@@ -88,6 +94,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 

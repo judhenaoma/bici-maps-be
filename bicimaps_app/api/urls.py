@@ -9,6 +9,9 @@ from ..views.routes_list_of_user_view import RoutesListView
 from ..views.encicla_stations_creation_view import EnciclaStationsCreationView
 from ..views.bike_way_creation_view import BikeWaysCreationView
 from ..views.bike_way_mls_creation_view import BikeWaysMLSCreationView
+from ..views.bike_way_list_view import BikeWaysListView
+from ..views.bike_parking_creation_view import BikeParkingView
+from ..views.bike_parking_list_view import BikeParkingListView
 
 urlpatterns = [
     path('sign-up/', UserCreationView.as_view()),
@@ -21,4 +24,9 @@ urlpatterns = [
     path('create-bike-way/', BikeWaysCreationView.as_view()),
     path('create-bike-way-mls/', BikeWaysMLSCreationView.as_view()),
     path('create-encicla-station/', EnciclaStationsCreationView.as_view()),
+    path('bikeways/', BikeWaysListView.as_view()),
+    path('create-bike-parking/', BikeParkingView.as_view()),
+    path('bike-parking-list/', BikeParkingListView.as_view()),
+
+
 ]
